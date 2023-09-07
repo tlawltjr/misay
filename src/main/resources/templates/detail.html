@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Skydash Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css">
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png"/>
+</head>
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo mr-5" href="index">Misay</a>
+            <a class="navbar-brand brand-logo-mini" href="index"></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                <span class="icon-menu"></span>
+            </button>
+            <ul class="navbar-nav mr-lg-2">
+                <li class="nav-item nav-search d-none d-lg-block">
+                    <div class="input-group">
+                        <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav navbar-nav-right">
+                <li class="nav-item dropdown">
+                    <!--                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"-->
+                    <!--                       data-toggle="dropdown">-->
+                    <!--                        <i class="icon-bell mx-0"></i>-->
+                    <!--                        <span class="count"></span>-->
+                    <!--                    </a>-->
+                    <!--                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"-->
+                    <!--                         aria-labelledby="notificationDropdown">-->
+                    <!--                        <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>-->
+                    <!--                        <a class="dropdown-item preview-item">-->
+                    <!--                            <div class="preview-thumbnail">-->
+                    <!--                                <div class="preview-icon bg-success">-->
+                    <!--                                    <i class="ti-info-alt mx-0"></i>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="preview-item-content">-->
+                    <!--                                <h6 class="preview-subject font-weight-normal">Application Error</h6>-->
+                    <!--                                <p class="font-weight-light small-text mb-0 text-muted">-->
+                    <!--                                    Just now-->
+                    <!--                                </p>-->
+                    <!--                            </div>-->
+                    <!--                        </a>-->
+                    <!--                        <a class="dropdown-item preview-item">-->
+                    <!--                            <div class="preview-thumbnail">-->
+                    <!--                                <div class="preview-icon bg-warning">-->
+                    <!--                                    <i class="ti-settings mx-0"></i>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="preview-item-content">-->
+                    <!--                                <h6 class="preview-subject font-weight-normal">Settings</h6>-->
+                    <!--                                <p class="font-weight-light small-text mb-0 text-muted">-->
+                    <!--                                    Private message-->
+                    <!--                                </p>-->
+                    <!--                            </div>-->
+                    <!--                        </a>-->
+                    <!--                        <a class="dropdown-item preview-item">-->
+                    <!--                            <div class="preview-thumbnail">-->
+                    <!--                                <div class="preview-icon bg-info">-->
+                    <!--                                    <i class="ti-user mx-0"></i>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="preview-item-content">-->
+                    <!--                                <h6 class="preview-subject font-weight-normal">New user registration</h6>-->
+                    <!--                                <p class="font-weight-light small-text mb-0 text-muted">-->
+                    <!--                                    2 days ago-->
+                    <!--                                </p>-->
+                    <!--                            </div>-->
+                    <!--                        </a>-->
+                    <!--                    </div>-->
+                </li>
+                <li class="nav-item nav-profile dropdown">
+                    <!--                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">-->
+                    <!--                        <img src="images/faces/face28.jpg" alt="profile"/>-->
+                    <!--                    </a>-->
+                    <!--                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">-->
+                    <!--                        <a class="dropdown-item">-->
+                    <!--                            <i class="ti-settings text-primary"></i>-->
+                    <!--                            Settings-->
+                    <!--                        </a>-->
+                    <!--                        <a class="dropdown-item">-->
+                    <!--                            <i class="ti-power-off text-primary"></i>-->
+                    <!--                            Logout-->
+                    <!--                        </a>-->
+                    <!--                    </div>-->
+                </li>
+                <li class="nav-item nav-settings d-none d-lg-flex">
+                    <a class="nav-link" href="#">
+                        <i class="icon-ellipsis"></i>
+                    </a>
+                </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                <span class="icon-menu"></span>
+            </button>
+        </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_settings-panel.html -->
+        <div class="theme-setting-wrapper">
+            <div id="settings-trigger"><i class="ti-settings"></i></div>
+            <div id="theme-settings" class="settings-panel">
+                <i class="settings-close ti-close"></i>
+                <p class="settings-heading">SIDEBAR SKINS</p>
+                <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                    <div class="img-ss rounded-circle bg-light border mr-3"></div>
+                    Light
+                </div>
+                <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                    <div class="img-ss rounded-circle bg-dark border mr-3"></div>
+                    Dark
+                </div>
+                <p class="settings-heading mt-2">HEADER SKINS</p>
+                <div class="color-tiles mx-0 px-4">
+                    <div class="tiles success"></div>
+                    <div class="tiles warning"></div>
+                    <div class="tiles danger"></div>
+                    <div class="tiles info"></div>
+                    <div class="tiles dark"></div>
+                    <div class="tiles default"></div>
+                </div>
+            </div>
+        </div>
+        <!-- partial -->
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item d-md-none"> <!-- d-md-none 클래스를 사용하여 중간 크기 이상의 화면에서 숨깁니다 -->
+                    <a class="nav-link" href="#" id="sidebarToggle">
+                        <i class="fa fa-bars menu-icon"></i>
+                        <span class="menu-title">메뉴</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cx?value=cx">
+                        <i class="icon-grid menu-icon"></i>
+                        <span class="menu-title">Cx</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sh?value=sh" >
+                        <i class="icon-layout menu-icon"></i>
+                        <span class="menu-title">Sh</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/elbow?value=elbow" >
+                        <i class="icon-columns menu-icon"></i>
+                        <span class="menu-title">Elbow</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/lx?value=lx" >
+                        <i class="icon-bar-graph menu-icon"></i>
+                        <span class="menu-title">Lx</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/knee?value=knee" >
+                        <i class="icon-grid-2 menu-icon"></i>
+                        <span class="menu-title">Knee</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ankle?value=ankle" >
+                        <i class="icon-contract menu-icon"></i>
+                        <span class="menu-title">Ankle</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-md-12 grid-margin">
+                        <div class="row">
+                            <div class="col-12 col-xl-8">
+                                <h3 class="font-weight-bold">Welcome Misay</h3>
+                                <h4 th:value="'No. '+ ${list.bno}"></h4>
+                            </div>
+                            <br>
+                            <div class="col-12 col-xl-8">
+                                <div class="justify-content-between d-flex">
+                                    <form method="POST" action="/register">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="name">이름</label>
+                                                    <input type="text" class="form-control" id="name" name="name" th:value="${list.name}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="surgeryName">수술명</label>
+                                                    <input type="text" class="form-control" id="surgeryName" name="surgeryName" th:value="${list.surgeryName}"required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="age">나이</label>
+                                                    <input type="number" class="form-control" id="age" name="age" th:value="${list.age}"required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="surgeryDate">수술날짜</label>
+                                                    <input type="date" class="form-control" id="surgeryDate" name="surgeryDate" th:value="${list.surgeryDate}"required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="surgeryArea">수술부위</label>
+                                                    <input type="text" class="form-control" id="surgeryArea" name="surgeryArea" th:value="${list.surgeryArea}"required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="rehabDate">재활날짜</label>
+                                                    <input type="date" class="form-control" id="rehabDate" name="rehabDate" th:value="${list.rehabDate}"required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="rehab">재활</label>
+                                            <textarea class="form-control" id="rehab" name="rehab" rows="4" required>[[${list.rehab}]]</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="memo">운동</label>
+                                            <textarea class="form-control" id="memo" name="memo" rows="4"  required>[[${list.memo}]]</textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">등록</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a
+                            href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
+                            class="ti-heart text-danger ml-1"></i></span>
+                </div>
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a
+                            href="https://www.themewagon.com/" target="_blank">Themewagon</a></span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+<!-- plugins:js -->
+<script src="vendors/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page -->
+<script src="vendors/chart.js/Chart.min.js"></script>
+<script src="vendors/datatables.net/jquery.dataTables.js"></script>
+<script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+<script src="js/dataTables.select.min.js"></script>
+
+<!-- End plugin js for this page -->
+<!-- inject:js -->
+<script src="js/off-canvas.js"></script>
+<script src="js/hoverable-collapse.js"></script>
+<script src="js/template.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/todolist.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="js/dashboard.js"></script>
+<script src="js/Chart.roundedBarCharts.js"></script>
+<!-- End custom js for this page-->
+</body>
+
+</html>
+
