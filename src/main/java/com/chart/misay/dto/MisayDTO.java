@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 public class MisayDTO {
     private Long bno;
 
+    private Long mno;
+
     private String name;
 
     private String age;

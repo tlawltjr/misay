@@ -41,70 +41,10 @@
                 </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
+
                 <li class="nav-item dropdown">
-                    <!--                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"-->
-                    <!--                       data-toggle="dropdown">-->
-                    <!--                        <i class="icon-bell mx-0"></i>-->
-                    <!--                        <span class="count"></span>-->
-                    <!--                    </a>-->
-                    <!--                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"-->
-                    <!--                         aria-labelledby="notificationDropdown">-->
-                    <!--                        <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>-->
-                    <!--                        <a class="dropdown-item preview-item">-->
-                    <!--                            <div class="preview-thumbnail">-->
-                    <!--                                <div class="preview-icon bg-success">-->
-                    <!--                                    <i class="ti-info-alt mx-0"></i>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                            <div class="preview-item-content">-->
-                    <!--                                <h6 class="preview-subject font-weight-normal">Application Error</h6>-->
-                    <!--                                <p class="font-weight-light small-text mb-0 text-muted">-->
-                    <!--                                    Just now-->
-                    <!--                                </p>-->
-                    <!--                            </div>-->
-                    <!--                        </a>-->
-                    <!--                        <a class="dropdown-item preview-item">-->
-                    <!--                            <div class="preview-thumbnail">-->
-                    <!--                                <div class="preview-icon bg-warning">-->
-                    <!--                                    <i class="ti-settings mx-0"></i>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                            <div class="preview-item-content">-->
-                    <!--                                <h6 class="preview-subject font-weight-normal">Settings</h6>-->
-                    <!--                                <p class="font-weight-light small-text mb-0 text-muted">-->
-                    <!--                                    Private message-->
-                    <!--                                </p>-->
-                    <!--                            </div>-->
-                    <!--                        </a>-->
-                    <!--                        <a class="dropdown-item preview-item">-->
-                    <!--                            <div class="preview-thumbnail">-->
-                    <!--                                <div class="preview-icon bg-info">-->
-                    <!--                                    <i class="ti-user mx-0"></i>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                            <div class="preview-item-content">-->
-                    <!--                                <h6 class="preview-subject font-weight-normal">New user registration</h6>-->
-                    <!--                                <p class="font-weight-light small-text mb-0 text-muted">-->
-                    <!--                                    2 days ago-->
-                    <!--                                </p>-->
-                    <!--                            </div>-->
-                    <!--                        </a>-->
-                    <!--                    </div>-->
                 </li>
                 <li class="nav-item nav-profile dropdown">
-                    <!--                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">-->
-                    <!--                        <img src="images/faces/face28.jpg" alt="profile"/>-->
-                    <!--                    </a>-->
-                    <!--                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">-->
-                    <!--                        <a class="dropdown-item">-->
-                    <!--                            <i class="ti-settings text-primary"></i>-->
-                    <!--                            Settings-->
-                    <!--                        </a>-->
-                    <!--                        <a class="dropdown-item">-->
-                    <!--                            <i class="ti-power-off text-primary"></i>-->
-                    <!--                            Logout-->
-                    <!--                        </a>-->
-                    <!--                    </div>-->
                 </li>
                 <li class="nav-item nav-settings d-none d-lg-flex">
                     <a class="nav-link" href="#">
@@ -112,6 +52,7 @@
                     </a>
                 </li>
             </ul>
+            <a href="/membership" style="color: #0b7dfd">회원관리</a>
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                     data-toggle="offcanvas">
                 <span class="icon-menu"></span>
@@ -156,37 +97,43 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/createMember">
+                        <i class="icon-grid menu-icon"></i>
+                        <span class="menu-title">Create Member</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/cx?value=cx">
                         <i class="icon-grid menu-icon"></i>
                         <span class="menu-title">Cx</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/sh?value=sh" >
+                    <a class="nav-link" href="/sh?value=sh">
                         <i class="icon-layout menu-icon"></i>
                         <span class="menu-title">Sh</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/elbow?value=elbow" >
+                    <a class="nav-link" href="/elbow?value=elbow">
                         <i class="icon-columns menu-icon"></i>
                         <span class="menu-title">Elbow</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/lx?value=lx" >
+                    <a class="nav-link" href="/lx?value=lx">
                         <i class="icon-bar-graph menu-icon"></i>
                         <span class="menu-title">Lx</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/knee?value=knee" >
+                    <a class="nav-link" href="/knee?value=knee">
                         <i class="icon-grid-2 menu-icon"></i>
                         <span class="menu-title">Knee</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ankle?value=ankle" >
+                    <a class="nav-link" href="/ankle?value=ankle">
                         <i class="icon-contract menu-icon"></i>
                         <span class="menu-title">Ankle</span>
                     </a>
@@ -206,36 +153,44 @@
                             <br>
                             <div class="col-12 col-xl-8">
                                 <div class="justify-content-between d-flex">
-                                    <form method="POST" action="/register">
+                                    <form method="post" action="/modify">
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="name">이름</label>
-                                                    <input type="text" class="form-control" id="name" name="name" th:value="${list.name}" required>
+                                                    <input type="text" class="form-control" id="name" name="name"
+                                                           th:value="${list.name}" required>
+                                                    <input type="hidden" name="bno" th:value="${list.bno}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="surgeryName">수술명</label>
-                                                    <input type="text" class="form-control" id="surgeryName" name="surgeryName" th:value="${list.surgeryName}"required>
+                                                    <input type="text" class="form-control" id="surgeryName"
+                                                           name="surgeryName" th:value="${list.surgeryName}" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="age">나이</label>
-                                                    <input type="number" class="form-control" id="age" name="age" th:value="${list.age}"required>
+                                                    <input type="number" class="form-control" id="age" name="age"
+                                                           th:value="${list.age}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="surgeryDate">수술날짜</label>
-                                                    <input type="date" class="form-control" id="surgeryDate" name="surgeryDate" th:value="${list.surgeryDate}"required>
+                                                    <input type="date" class="form-control" id="surgeryDate"
+                                                           name="surgeryDate" th:value="${list.surgeryDate}" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="surgeryArea">수술부위</label>
-                                                    <input type="text" class="form-control" id="surgeryArea" name="surgeryArea" th:value="${list.surgeryArea}"required>
+                                                    <input type="text" class="form-control" id="surgeryArea"
+                                                           name="surgeryArea" th:value="${list.surgeryArea}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="rehabDate">재활날짜</label>
-                                                    <input type="date" class="form-control" id="rehabDate" name="rehabDate" th:value="${list.rehabDate}"required>
+                                                    <input type="date" class="form-control" id="rehabDate"
+                                                           name="rehabDate"
+                                                           th:value="${list.rehabDate}" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -245,9 +200,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="memo">운동</label>
-                                            <textarea class="form-control" id="memo" name="memo" rows="4"  required>[[${list.memo}]]</textarea>
+                                            <textarea class="form-control" id="memo" name="memo" rows="4" required>[[${list.memo}]]</textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">등록</button>
+                                        <button type="submit" class="btn btn-primary">수정</button>
+                                        <a th:href="@{/delete(bno=${list.bno})}" class="btn btn-youtube" onclick="return confirmDelete();">삭제</a>
+                                        <script>
+                                            function confirmDelete() {
+                                                return confirm("정말 삭제하시겠습니까?");
+                                            }
+                                        </script>
                                     </form>
                                 </div>
                             </div>

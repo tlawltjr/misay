@@ -1,13 +1,15 @@
 package com.chart.misay.service;
 
 import com.chart.misay.dto.MisayDTO;
+import com.chart.misay.entity.Member;
 import com.chart.misay.entity.Misay;
+import com.chart.misay.repository.MemberRepository;
 import com.chart.misay.repository.MisayRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,41 +19,89 @@ public class MisayService {
 
     private final MisayRepository misayRepository;
 
-    public MisayDTO read(Long bno){
-        System.out.println("서비스 bno: " + bno);
-        Optional<Misay> list = misayRepository.findById(bno);
-        MisayDTO dto = MisayDTO.builder()
-                .name(list.get().getName())
-                .age(list.get().getAge())
-                .surgeryDate(list.get().getSurgeryDate())
-                .surgeryName(list.get().getSurgeryName())
-                .surgeryArea(list.get().getSurgeryArea())
-                .bno(list.get().getBno())
-                .rehab(list.get().getRehab())
-                .rehabDate(list.get().getRehabDate())
-                .memo(list.get().getMemo())
+    private final MemberRepository memberRepository;
+
+    public void deleteBoard(Long bno){
+        Optional<Misay> misayOptional = misayRepository.findById(bno);
+
+        if (misayOptional.isPresent()) {
+            Misay misay = misayOptional.get();
+            misayRepository.delete(misay);
+        } else {
+            // 지정된 bno에 해당하는 Misay 엔티티가 없을 때 처리
+        }
+    }
+
+    public void modify(MisayDTO dto){
+        Member member = Member.builder().name(dto.getName()).build();
+        Misay misay = Misay.builder()
+                .bno(dto.getBno())
+                .memo(dto.getMemo())
+                .member(member)
+                .surgeryName(dto.getSurgeryName())
+                .surgeryDate(dto.getSurgeryDate())
+                .surgeryArea(dto.getSurgeryArea())
+                .rehabDate(dto.getRehabDate())
+                .rehab(dto.getRehab())
                 .build();
-        System.out.println(list.get().getMemo());
+        misayRepository.save(misay);
+    }
+
+    public MisayDTO read(Long bno){
+        Misay list = misayRepository.getOne(bno);
+        Member member = list.getMember();
+        MisayDTO dto = MisayDTO.builder()
+                .mno(member.getMno())
+                .name(member.getName())
+                .age(member.getAge())
+                .surgeryDate(list.getSurgeryDate())
+                .surgeryName(list.getSurgeryName())
+                .surgeryArea(list.getSurgeryArea())
+                .bno(list.getBno())
+                .rehab(list.getRehab())
+                .rehabDate(list.getRehabDate())
+                .memo(list.getMemo())
+                .build();
         return dto;
     }
 
     public List getList(){
-        List list = misayRepository.findAll();
-        return list;
+        List<MisayDTO> result = new ArrayList<>(); // 검색 결과를 저장할 리스트
+        List<Misay> misay = misayRepository.findAll();
+
+        for(Misay list : misay){
+            Member member = list.getMember();
+            MisayDTO dto = MisayDTO.builder()
+                    .bno(list.getBno())
+                    .name(member.getName())
+                    .age(member.getAge())
+                    .surgeryDate(list.getSurgeryDate())
+                    .surgeryName(list.getSurgeryName())
+                    .surgeryArea(list.getSurgeryArea())
+                    .rehab(list.getRehab())
+                    .rehabDate(list.getRehabDate())
+                    .memo(list.getMemo())
+                    .build();
+            result.add(dto);
+        }
+        return result;
     }
 
     public void register(MisayDTO dto){
+
+        Member member = memberRepository.getOne(dto.getMno());
+
         Misay m = Misay.builder()
+                .member(member)
                 .bno(dto.getBno())
-                .age(dto.getAge())
                 .rehab(dto.getRehab())
                 .rehabDate(dto.getRehabDate())
                 .surgeryArea(dto.getSurgeryArea())
                 .surgeryDate(dto.getSurgeryDate())
                 .surgeryName(dto.getSurgeryName())
-                .name(dto.getName())
                 .memo(dto.getMemo())
                 .build();
+
         misayRepository.save(m);
     }
     public List<MisayDTO> getCategory(String value){
@@ -60,10 +110,11 @@ public class MisayService {
         List<Misay> misay = misayRepository.findBySurgeryArea(value);
 
         for(Misay list : misay){
+            Member member = list.getMember();
             MisayDTO dto = MisayDTO.builder()
                     .bno(list.getBno())
-                    .name(list.getName())
-                    .age(list.getAge())
+                    .name(member.getName())
+                    .age(member.getAge())
                     .surgeryDate(list.getSurgeryDate())
                     .surgeryName(list.getSurgeryName())
                     .surgeryArea(list.getSurgeryArea())
@@ -75,16 +126,17 @@ public class MisayService {
         }
         return result;
     }
-    public List<MisayDTO> getSearch(String keyword){
+    public List<MisayDTO> getSurgery(String keyword){
 
         List<MisayDTO> result = new ArrayList<>(); // 검색 결과를 저장할 리스트
-        List<Misay> misay = misayRepository.searchByNameOrSurgeryName(keyword);
+        List<Misay> misay = misayRepository.findBySurgeryAreaContaining(keyword);
 
         for(Misay list : misay){
+            Member member = list.getMember();
             MisayDTO dto = MisayDTO.builder()
                     .bno(list.getBno())
-                    .name(list.getName())
-                    .age(list.getAge())
+                    .name(member.getName())
+                    .age(member.getAge())
                     .surgeryDate(list.getSurgeryDate())
                     .surgeryName(list.getSurgeryName())
                     .surgeryArea(list.getSurgeryArea())
@@ -96,5 +148,55 @@ public class MisayService {
         }
         return result;
     }
+    public List<MisayDTO> getName(String keyword){
+
+        List<MisayDTO> result = new ArrayList<>(); // 검색 결과를 저장할 리스트
+        List<Misay> misay = misayRepository.findByMemberNameContaining(keyword);
+
+        for(Misay list : misay){
+            Member member = list.getMember();
+            MisayDTO dto = MisayDTO.builder()
+                    .bno(list.getBno())
+                    .name(member.getName())
+                    .age(member.getAge())
+                    .surgeryDate(list.getSurgeryDate())
+                    .surgeryName(list.getSurgeryName())
+                    .surgeryArea(list.getSurgeryArea())
+                    .rehab(list.getRehab())
+                    .rehabDate(list.getRehabDate())
+                    .memo(list.getMemo())
+                    .build();
+            result.add(dto);
+        }
+        return result;
+    }
+    public void member(MisayDTO dto){
+        Member member = Member.builder().name(dto.getName()).age(dto.getAge()).build();
+        memberRepository.save(member);
+    }
+
+    public List<Member> getMembers(){
+        return memberRepository.findAll();
+    }
+
+    public List<Member> searchMembers(String keyword){
+        return memberRepository.findByNameContaining(keyword);
+    }
+
+    public MisayDTO getMisayDTO(Long mno){
+        Member member = memberRepository.getOne(mno);
+        MisayDTO dto = MisayDTO.builder()
+                .mno(member.getMno())
+                .name(member.getName())
+                .age(member.getAge())
+                .build();
+        return dto;
+    }
+//    @Transactional
+//    public void deleteMember(Long mno){
+//        List<Misay> list = misayRepository.findByMemberMno(mno);
+//        misayRepository.deleteAll(list);
+//        memberRepository.deleteById(mno);
+//    }
 
 }

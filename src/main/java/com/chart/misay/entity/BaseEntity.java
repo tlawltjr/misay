@@ -14,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 @EntityListeners(AuditingEntityListener.class)
 @Data
 abstract class BaseEntity {
+
     @CreatedDate
     private String regDate;
 

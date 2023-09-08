@@ -152,57 +152,30 @@
                             <br>
                             <div class="col-12 col-xl-8">
                                 <div class="justify-content-between d-flex">
-                                    <form method="POST" action="/register">
+                                    <form method="POST" action="/memberChange">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="hidden" id="mno" name="mno" th:value="${mno}">
                                                     <label for="name">이름</label>
                                                     <input type="text" class="form-control" id="name" name="name" th:value="${name}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="surgeryName">수술명</label>
-                                                    <input type="text" class="form-control" id="surgeryName" name="surgeryName" required>
+                                                    <input type="hidden" name="mno" th:value="${mno}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="age">나이</label>
                                                     <input type="number" class="form-control" id="age" name="age" th:value="${age}" required>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="surgeryDate">수술날짜</label>
-                                                    <input type="date" class="form-control" id="surgeryDate" name="surgeryDate" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="surgeryArea">수술부위</label>
-                                                    <select class="form-control" id="surgeryArea" name="surgeryArea" required>
-                                                        <option value="">-- 선택 --</option>
-                                                        <option value="Cx">Cx</option>
-                                                        <option value="Sh">Sh</option>
-                                                        <option value="Elbow">Elbow</option>
-                                                        <option value="Lx">Lx</option>
-                                                        <option value="Knee">Knee</option>
-                                                        <option value="Ankle">Ankle</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="rehabDate">재활날짜</label>
-                                                    <input type="date" class="form-control" id="rehabDate" name="rehabDate" required>
-                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="rehab">재활</label>
-                                            <textarea class="form-control" id="rehab" name="rehab" rows="4" required></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="memo">운동</label>
-                                            <textarea class="form-control" id="memo" name="memo" rows="4" required></textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">등록</button>
+                                        <button type="submit" class="btn btn-primary">수정</button>
+                                        <!-- 회원 삭제 기능 -->
+<!--                                        <a th:href="@{/deleteMember(mno=${mno})}" class="btn btn-youtube" onclick="return confirmDelete();">삭제</a>-->
+<!--                                        <script>-->
+<!--                                            function confirmDelete() {-->
+<!--                                                return confirm("정말 삭제하시겠습니까?");-->
+<!--                                            }-->
+<!--                                        </script>-->
                                     </form>
                                 </div>
                             </div>
